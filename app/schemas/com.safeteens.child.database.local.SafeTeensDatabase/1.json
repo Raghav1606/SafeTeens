@@ -1,0 +1,194 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "175d4eb6ebc9152731410fe56e743f54",
+    "entities": [
+      {
+        "tableName": "MessageReadCheckpoints",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`chatee_id` INTEGER NOT NULL, `message_source` INTEGER NOT NULL, `start_message_id` TEXT, `start_message_hash` TEXT, `start_message_date` TEXT NOT NULL, `end_message_id` TEXT, `end_message_hash` TEXT, `end_message_date` TEXT, `id` INTEGER PRIMARY KEY AUTOINCREMENT, `createdDate` TEXT, `updatedDate` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "chateeId",
+            "columnName": "chatee_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "source",
+            "columnName": "message_source",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startMessageId",
+            "columnName": "start_message_id",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "startMessageHash",
+            "columnName": "start_message_hash",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "startMessageDate",
+            "columnName": "start_message_date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "endMessageId",
+            "columnName": "end_message_id",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "endMessageHash",
+            "columnName": "end_message_hash",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "endMessageDate",
+            "columnName": "end_message_date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "createdDate",
+            "columnName": "createdDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "updatedDate",
+            "columnName": "updatedDate",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Chatee",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`source` INTEGER NOT NULL, `type` INTEGER NOT NULL, `name` TEXT NOT NULL, `identifier_value` TEXT NOT NULL, `identifier_field` TEXT NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT, `createdDate` TEXT, `updatedDate` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "chateeSource",
+            "columnName": "source",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "chateeType",
+            "columnName": "type",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "chateeName",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "identifierValue",
+            "columnName": "identifier_value",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "identifierField",
+            "columnName": "identifier_field",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "createdDate",
+            "columnName": "createdDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "updatedDate",
+            "columnName": "updatedDate",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "MessageSyncStatus",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`firebase_id` TEXT NOT NULL, `sync_state` INTEGER, `last_modified_time` TEXT, `created_datetime` TEXT, PRIMARY KEY(`firebase_id`))",
+        "fields": [
+          {
+            "fieldPath": "firebaseId",
+            "columnName": "firebase_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "syncState",
+            "columnName": "sync_state",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "lastModified",
+            "columnName": "last_modified_time",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "createdDatetime",
+            "columnName": "created_datetime",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "firebase_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '175d4eb6ebc9152731410fe56e743f54')"
+    ]
+  }
+}
